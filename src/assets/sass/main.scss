@@ -885,3 +885,92 @@ input {
         border: none;
     }
 }
+
+// profile 
+.profile_wrapper {
+    padding: 24px 16px 80px;
+    .main-nav {
+        a {
+            &:last-child {
+                position: relative;
+                color: $secondary-color;
+                path {
+                    stroke: $secondary-color
+                }
+                &::after {
+                    content: "";
+                    height: 2px;
+                    width: 100%;
+                    background-color: $secondary-color;
+                    position: absolute;
+                    bottom: -4px;
+                    left: 0
+                }
+            }
+        }
+    }
+
+    form {
+        label {
+            display: block;
+            @extend .flex-center;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 48px;
+            h1 {
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 21.09px;
+                text-align: center;
+                color: $white;
+            }
+            .img {
+                width: max-content;
+                position: relative;
+                margin: auto;
+                img {
+                    width: 72px;
+                    height: 72px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    border: 1px solid $secondary-color;
+                }
+                svg {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+            input {
+                display: none;
+            }
+        }
+    }
+    .info {
+        @extend .flex-center;
+        justify-content: space-between;
+        background: linear-gradient(90deg, #2B2B2B 0%, #474747 100%);
+        border-radius: 10px;
+        padding: 8px 16px;
+        margin-top: 24px;
+        h1 {
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 23.44px;
+            text-align: center;
+            color: #fff;
+            @extend .flex-center;
+            flex-direction: column;
+            gap: 4px;
+            span {
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 16.41px;
+                text-align: center;
+                color: #C4C4C4;
+            }
+        }
+    }
+}
