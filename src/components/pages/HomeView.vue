@@ -1,7 +1,7 @@
 <template>
     <div class="home_wrapper">
         <div class="profile">
-            <router-link>
+            <router-link to="/profile">
                 <img src="./../../assets/profile.jpeg" />
                 Welcome Mohamed
             </router-link>
