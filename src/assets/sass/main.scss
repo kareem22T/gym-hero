@@ -617,9 +617,11 @@ input {
                         margin-top: -12px; /* Centers thumb on the track */
                         background-color: $secondary-color;
                         height: 2.5rem;
-                        width: 4px;
+                        width: 5px;
                         border-radius: 50px;
                         position: relative;
+                        bottom: 2px;
+                        transform: translateY(-6px);
                         &::after {
                             content: "";
                             width: 25px;
@@ -634,6 +636,7 @@ input {
                         height: 2.5rem;
                         width: 4px;
                         border-radius: 50px;
+                        bottom: 2px;
                     }
                     button {
                         background-color: transparent;

@@ -580,9 +580,11 @@ input:focus {
   margin-top: -12px; /* Centers thumb on the track */
   background-color: #EBFC64;
   height: 2.5rem;
-  width: 4px;
+  width: 5px;
   border-radius: 50px;
   position: relative;
+  bottom: 2px;
+  transform: translateY(-6px);
 }
 .Bmi_wrapper .bmi .bottom > div .rate_controller input[type=range]::-webkit-slider-thumb::after {
   content: "";
@@ -597,6 +599,7 @@ input:focus {
   height: 2.5rem;
   width: 4px;
   border-radius: 50px;
+  bottom: 2px;
 }
 .Bmi_wrapper .bmi .bottom > div .rate_controller button {
   background-color: transparent;
