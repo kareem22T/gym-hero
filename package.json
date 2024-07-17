@@ -11,9 +11,12 @@
   "dependencies": {
     "apexcharts": "^3.50.0",
     "core-js": "^3.8.3",
+    "swiper": "^11.1.5",
     "vue": "^3.2.13",
+    "vue-apexcharts": "^1.6.2",
     "vue-router": "^4.4.0",
-    "vue-speedometer": "^3.0.1"
+    "vue-speedometer": "^3.0.1",
+    "vue3-apexcharts": "^1.5.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

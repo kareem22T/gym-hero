@@ -7,6 +7,7 @@ import WorkoutView from '@/components/pages/WorkoutView.vue'
 import ExerciseView from '@/components/pages/ExerciseView.vue'
 import BmiView from '@/components/pages/BmiView.vue'
 import BmiresultsView from '@/components/pages/BmiresultsView.vue'
+import WaterTrakingView from '@/components/pages/WaterTrakingView.vue'
 
 const routes = [
   {
@@ -48,6 +49,11 @@ const routes = [
     path: '/bmi-result',
     name: 'bmiresult',
     component: BmiresultsView
+  },
+  {
+    path: '/water-traking',
+    name: 'WaterTraking',
+    component: WaterTrakingView
   },
 ]
 

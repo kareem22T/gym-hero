@@ -11,7 +11,7 @@ body {
   color: #fff;
 }
 
-.flex-center, .excersice_wrapper .excersice_desc, .workout_wrapper .exercises .exercise_card, .workout_wrapper .exercises, .home_wrapper .workouts-body .program-card .features span, .home_wrapper .workouts-body .program-card .features, .home_wrapper .workouts-body, .home_wrapper .workout-head, .home_wrapper .profile a, .login_wrapper form, .login_wrapper .head, .onboarding_wrapper .card .btns, .onboarding_wrapper .card, .onboarding_wrapper, .page-head, .loader_wrapper, .main-nav a, .main-nav {
+.flex-center, .Water_traking_wrapper .rate_controller, .Water_traking_wrapper .page-head > div, .excersice_wrapper .excersice_desc, .workout_wrapper .exercises .exercise_card, .workout_wrapper .exercises, .home_wrapper .workouts-body .program-card .features span, .home_wrapper .workouts-body .program-card .features, .home_wrapper .workouts-body, .home_wrapper .workout-head, .home_wrapper .profile a, .login_wrapper form, .login_wrapper .head, .onboarding_wrapper .card .btns, .onboarding_wrapper .card, .onboarding_wrapper, .page-head, .loader_wrapper, .main-nav a, .main-nav {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -715,6 +715,125 @@ input:focus {
   line-height: 22.4px;
   text-align: left;
   padding-left: 24px;
+}
+
+.Water_traking_wrapper {
+  padding: 24px 16px 120px;
+}
+.Water_traking_wrapper .page-head {
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.Water_traking_wrapper .page-head > div {
+  gap: 8px;
+}
+.Water_traking_wrapper .main-nav a:nth-child(2) {
+  position: relative;
+  color: #EBFC64;
+}
+.Water_traking_wrapper .main-nav a:nth-child(2) path {
+  fill: #EBFC64;
+}
+.Water_traking_wrapper .main-nav a:nth-child(2)::after {
+  content: "";
+  height: 2px;
+  width: 100%;
+  background-color: #EBFC64;
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+}
+.Water_traking_wrapper .daily-goal {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18.75px;
+  text-align: left;
+  color: #FDFDFD;
+}
+.Water_traking_wrapper .month-slider {
+  margin-top: 24px;
+}
+.Water_traking_wrapper .month-slider .swiper-slide {
+  width: min-content;
+  width: 48px;
+  min-width: 48px;
+  max-width: 48px;
+}
+.Water_traking_wrapper .month-slider .swiper-slide button {
+  width: 48px;
+  min-width: 48px;
+  max-width: 48px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #2B2B2B 0%, #474747 100%);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: center;
+  color: #FDFDFD;
+  padding: 12px 0;
+  border: none;
+}
+.Water_traking_wrapper .month-slider .swiper-slide button.selected {
+  color: #161717;
+  background: #EBFC64 !important;
+}
+.Water_traking_wrapper .chart_wrapper {
+  position: relative;
+}
+.Water_traking_wrapper .chart_wrapper .apexcharts-datalabels-group {
+  display: none;
+}
+.Water_traking_wrapper .chart_wrapper .vue-apexcharts {
+  margin-top: 42px;
+}
+.Water_traking_wrapper .chart_wrapper .percent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.Water_traking_wrapper .chart_wrapper .percent img {
+  width: 56px;
+}
+.Water_traking_wrapper .chart_wrapper .percent h1 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28.13px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.Water_traking_wrapper .rate_controller {
+  margin-top: -8px;
+}
+.Water_traking_wrapper .rate_controller h1 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  color: #FDFDFD;
+}
+.Water_traking_wrapper .rate_controller button {
+  background-color: transparent;
+  border: none;
+}
+.Water_traking_wrapper .rate_controller button svg {
+  width: 24px;
+  height: 24px;
+}
+.Water_traking_wrapper > button, .Water_traking_wrapper > a {
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  margin-top: 64px;
+  color: #161717;
+  padding: 12px 16px;
+  background-color: #EBFC64;
+  width: 100%;
+  border: none;
 }
 
 /*# sourceMappingURL=main.css.map */
