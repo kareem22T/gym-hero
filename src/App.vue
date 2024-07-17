@@ -1,26 +1,27 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <router-view v-if="!showLoader"/>
+    <LoaderComponent v-if="showLoader"/>
+  </div>
 </template>
+<style scoped>@import './assets/css/main.css';</style>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import LoaderComponent from "./components/layout/Loading"
 
 export default {
   name: 'App',
+  data() {
+    return {
+      showLoader: true
+    }
+  },
   components: {
-    HelloWorld
+    LoaderComponent
+  }, mounted() {
+    setTimeout(() => {
+      this.showLoader = false
+    }, 1500)
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

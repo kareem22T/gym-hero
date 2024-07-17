@@ -1,0 +1,756 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+$main-color: #161717;
+$white: #FDFDFD;
+$secondary-color: #EBFC64;
+
+* {
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: $main-color;
+    color: #fff;
+}
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+// nav bar 
+.main-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg, #2B2B2B 0%, #474747 100%);
+    /* main colour */
+    border: 0.5px solid #EBFC64;
+    border-radius: 20px;
+    padding: 12px;
+    @extend .flex-center;
+    z-index: 9999;
+    width: 100vw;
+    max-width: 100vw;
+    height: min-content;
+    a {
+        @extend .flex-center;
+        flex-direction: column;
+        color: $white;
+        gap: 4px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16.41px;
+        text-align: center;
+        color: #C4C4C4;
+        white-space: nowrap;
+        text-decoration: none;
+        svg {
+            path[stroke] {
+                stroke: #C4C4C4; /* or any desired style */
+            }
+              
+            /* Style for SVG elements without a stroke */
+            path:not([stroke]) {
+            fill: #C4C4C4; /* or any desired style */
+            }
+        }
+    }
+}
+.loader_wrapper {
+    @extend .flex-center;
+    height: 100vh;
+}
+.page-head {
+    @extend .flex-center;
+    gap: 8px;
+    justify-content: start;
+    position: relative;
+    margin-bottom: 32px;
+    h1 {
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 28.13px;
+        text-align: left;
+        color: $white;        
+        margin: 0    
+    }
+}
+.search {
+    position: relative;
+    margin-bottom: 24px;
+    svg {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+    }
+    input {
+        padding-left: 40px;
+    }
+}
+.loader_wrapper img {
+    width: 100%;
+    max-width: 350px;
+}
+input {
+    border: 1px solid $white;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18.75px;
+    text-align: left;
+    color: $white;
+    padding: 14px 16px;
+    background-color: transparent;
+    width: 100%;
+    &:focus {
+        outline: none;
+        border-color: $secondary-color;
+    }
+}
+
+// start on boarding
+.onboarding_wrapper {
+    @extend .flex-center;
+    align-items: end;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    &::after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        background-color: rgba(0, 0, 0, .35);
+        top: 0;
+        left: 0;
+        z-index: 2;
+    }
+
+
+    .card {
+        width: 100%;
+        padding: 32px;
+        background-color: #FDFDFD33;
+        @extend .flex-center;
+        flex-direction: column;
+        border-radius: 20px 20px 0 0;
+        z-index: 3;
+        h1 {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 23.44px;
+            text-align: center;
+        }
+        p {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 22.4px;
+            text-align: center;
+            color: #C4C4C4;
+        }
+        .btns {
+            @extend .flex-center;
+            width: 100%;
+            margin-top: 8px;
+            a {
+                width: 100%;
+                color: $main-color;
+                font-size: 20px;
+                font-weight: 400;
+                line-height: 23.44px;
+                border: 1px solid $secondary-color;
+                background-color: $secondary-color;
+                border-radius: 10px;
+                padding: 8px 12px;
+                text-align: center;
+                display: block;
+                text-decoration: none;
+                &:last-child {
+                    background-color: transparent;
+                    color: $secondary-color;
+                }
+            }
+        }
+    }
+}
+
+// starts auth pages 
+.login_wrapper {
+    width: 100%;
+    position: relative;
+    min-height: 100vh;
+    padding: 40px 16px;
+    > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: .1;
+    }
+
+    *:not(>img) {
+        z-index: 2;
+    }
+    .head {
+        @extend .flex-center;
+        gap: 8px;
+        justify-content: start;
+        position: relative;
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 28.13px;
+            text-align: left;
+            color: $white;        
+            margin: 0    
+        }
+    }
+    form {
+        @extend .flex-center;
+        flex-direction: column;
+        gap: 32px;
+        margin-top: 64px;
+        width: 100%;
+        position: relative;
+        button, >a {
+            border-radius: 10px;
+            font-size: 24px;
+            font-weight: 500;
+            text-align: center;
+            color: $main-color;
+            padding: 12px 16px;
+            background-color: $secondary-color;
+            width: 100%;
+            margin-top: 16px;
+            border: none;
+        }
+        p {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 21.09px;
+            text-align: left;
+            a {
+                color: $secondary-color;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+// starts home
+.home_wrapper {
+    padding: 24px 16px 80px;
+    .main-nav {
+        a {
+            &:first-child {
+                position: relative;
+                color: $secondary-color;
+                path {
+                    stroke: $secondary-color
+                }
+                &::after {
+                    content: "";
+                    height: 2px;
+                    width: 100%;
+                    background-color: $secondary-color;
+                    position: absolute;
+                    bottom: -4px;
+                    left: 0
+                }
+            }
+        }
+    }
+    .profile a{
+        @extend .flex-center;
+        justify-content: start;
+        gap: 8px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 18.75px;
+        text-align: center;
+        color: $white;
+        text-decoration: none;
+        img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        margin-bottom: 32px;
+    }
+    .workout-head {
+        @extend .flex-center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+        h1 {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 23.44px;
+            text-align: left;
+            color: $white;            
+        }
+
+        a {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 16.41px;
+            text-align: left;
+            color: $white;
+        }
+    }
+
+    .workouts-body {
+        @extend .flex-center;
+        flex-direction: column;
+        width: 100%;
+        .program-card {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            min-height: 168px;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0 ;
+                left: 0;
+
+            }
+            &::after {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0 ;
+                left: 0;
+                background-color: #0000004D;
+                content: "";
+            }
+            *:not(img) {
+                z-index: 2;
+            }
+            h1 {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: max-content;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 18.75px;
+                text-align: center;
+                color: #fff;
+                padding: 8px 12px;
+                background-color: #16171780
+            }
+            .features {
+                @extend .flex-center;
+                justify-content: space-around;
+                position: absolute;
+                bottom: 16px;
+                width: 100%;
+                span {
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 50%;
+                    background: #16171780;
+                    color: $secondary-color;
+                    h2 {
+
+                        font-size: 8px;
+                        font-weight: 400;
+                        line-height: 9.38px;
+                        text-align: center;
+                    }
+                    font-size: 8px;
+                    font-weight: 400;
+                    line-height: 9.38px;
+                    text-align: center;
+                    @extend .flex-center;
+                    gap: 0px;
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+}
+
+
+// workout_wrapper
+.workout_wrapper {
+    width: 100%;
+    position: relative;
+    min-height: 100vh;
+    padding: 40px 16px;
+    .exercises {
+        @extend .flex-center;
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+        .exercise_card {
+            background: linear-gradient(90deg, #2B2B2B 0%, #474747 100%);
+            border-radius: 10px;
+            @extend .flex-center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 8px;
+            text-decoration: none;
+            svg {
+                width: 28px;
+            }
+            .text {
+                width: 100%;
+                height: 56px;
+                h1 {
+                    font-size: 16px;
+                    font-weight: 600;
+                    line-height: 18.75px;
+                    text-align: left;
+                    color: $white
+                }
+                p {
+                    font-size: 14px;
+                    font-weight: 600;
+                    line-height: 16.41px;
+                    text-align: left;
+                    color: #C4C4C4
+                }
+            }
+            img {
+                width: 56px;
+                height: 56px;
+                object-fit: cover;
+                border-radius: 6px;
+            }
+        }
+    }
+}
+
+
+.excersice_wrapper {
+    width: 100%;
+    position: relative;
+    min-height: 100vh;
+    padding: 40px 16px;
+    .thumbnail {
+        width: 100%;
+        height: 350px;
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+        &::after {
+            content: "";
+            position: absolute;
+            display: block;
+            opacity: .3;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            background: linear-gradient(90deg, #2B2B2B 0%, #474747 100%);
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .excersice_desc {
+        @extend .flex-center;
+        flex-direction: column;
+        align-items: start;
+        gap: 32px;
+        margin-top: 32px;
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 23.44px;
+            text-align: left;
+            margin-bottom: 8px;
+            color: #EBFC64;
+        }
+        ul {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 22.4px;
+            text-align: left;
+            color: $white;
+            padding-left: 24px;
+            span {
+                opacity: .8;
+            }
+        }
+    }
+}
+
+// bmi
+.Bmi_wrapper {
+    width: 100%;
+    position: relative;
+    min-height: 100vh;
+    padding: 40px 16px;
+    .bmi {
+        .top {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            >div {
+                background: linear-gradient(90deg, #2B2B2B 0%, #474747 100%);
+                border-radius: 10px;
+                padding: 16px;
+                h2 {
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: 18.75px;
+                    text-align: center;
+                    color: #C4C4C4;
+                }
+                h1 {
+                    color: #FDFDFD;
+                    font-size: 24px;
+                    font-weight: 400;
+                    line-height: 24px;
+                    text-align: center;
+                }
+                .rate_controller {
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 8px;
+                    margin-top: 40px;
+                    button {
+                        background-color: transparent;
+                        border: none;
+                    }
+                }
+            }
+        }
+        .bottom {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-top: 16px;
+            >div {
+                background: linear-gradient(90deg, #2B2B2B 0%, #474747 100%);
+                border-radius: 10px;
+                padding: 16px 40px;
+                h2 {
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: 18.75px;
+                    text-align: center;
+                    color: #C4C4C4;
+                }
+                h3 {
+                    font-size: 24px;
+                    font-weight: 400;
+                    line-height: 28.13px;
+                    text-align: center;
+                    color: $secondary-color;
+                    margin-top: 16px;
+                }
+                h1 {
+                    color: #FDFDFD;
+                    font-size: 24px;
+                    font-weight: 400;
+                    line-height: 24px;
+                    text-align: center;
+                }
+                .rate_controller {
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 8px;
+                    margin-top: 8px;
+                    position: relative;
+                    svg {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: auto;
+                        bottom: 0;
+                    }
+                    input {
+                        -webkit-appearance: none;
+                        appearance: none;
+                        background: transparent;
+                        cursor: pointer;
+                        width: 15rem;
+                        border: none;
+                        &:focus {
+                            border: none;
+                        }
+                        width: 100%;
+                        z-index: 2;
+                    }
+                    input[type="range"]::-webkit-slider-runnable-track {
+                        background: transparent;
+                        height: 0.5rem;
+                      }
+                      
+                      /******** Firefox ********/
+                      input[type="range"]::-moz-range-track {
+                        background: transparent;
+                        height: 0.5rem;
+                    }
+                    input[type="range"]::-webkit-slider-thumb {
+                        -webkit-appearance: none; /* Override default look */
+                        appearance: none;
+                        margin-top: -12px; /* Centers thumb on the track */
+                        background-color: $secondary-color;
+                        height: 2.5rem;
+                        width: 4px;
+                        border-radius: 50px;
+                        position: relative;
+                        &::after {
+                            content: "";
+                            width: 25px;
+                            height: 25px;
+                            background-color: $secondary-color;
+                        }
+                    }
+                    input[type="range"]::-moz-range-thumb {
+                        border: none; /*Removes extra border that FF applies*/
+                        border-radius: 0; /*Removes default border-radius that FF applies*/
+                        background-color: $secondary-color;
+                        height: 2.5rem;
+                        width: 4px;
+                        border-radius: 50px;
+                    }
+                    button {
+                        background-color: transparent;
+                        border: none;
+                    }
+                }
+            }
+        }
+        >button, >a {
+            border-radius: 10px;
+            font-size: 24px;
+            font-weight: 500;
+            text-align: center;
+            display: block;
+            text-decoration: none;
+            margin-top: 120px;
+            color: $main-color;
+            padding: 12px 16px;
+            background-color: $secondary-color;
+            width: 100%;
+            border: none;
+        }
+    }
+    .vue-speedometer {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        margin-top: 32px;
+        margin-bottom: -128px;
+        &::before {
+            content: "BMI";
+            width: 100px;
+            height: 50px;
+            position: absolute;
+            background: #E6E6E6;
+            bottom: 50%;
+            border-radius: 60px 60px 0 0;
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            color: #000;
+            font-size: 32px;
+            font-weight: 700;
+            border-left: 5px solid #6B6B6B;
+            border-top: 5px solid #6B6B6B;
+            border-right: 5px solid #6B6B6B;
+          }
+        &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            background: #fff;
+            border-radius: 200px 200px 0 0;
+            z-index: -1;
+            width: 300px;
+            border-left: 8px solid #6B6B6B;
+            border-top: 8px solid #6B6B6B;
+            border-right: 8px solid #6B6B6B;
+            box-sizing: border-box;
+            background: #E6E6E6;
+        }     
+        .pointer {  
+            transform: translate(148px, 146px);
+            path {
+                stroke: #000;
+                stroke-width: 2px;
+            }
+        }
+        g.label {
+            transform: translate(150px, 150px) scale(1.3);
+        }   
+    }
+    .result {
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 28.13px;
+        text-align: center;
+        width: 100%;
+        display: block;
+        margin: auto;
+        color: $secondary-color;
+    }        
+    .desc {
+        font-size: 18px;
+        line-height: 25px;
+        font-weight: 400;
+        text-align: center;
+        color: $white;
+        max-width: 260px;
+        display: block;
+        margin: auto;
+        color: #C4C4C4;
+        margin-top: 8px;
+    }
+    .tips_wrapper {
+        background: linear-gradient(90deg, #2B2B2B 0%, #474747 100%);
+        padding: 16px;
+        border-radius: 10px;
+        color: #C4C4C4;
+        margin-top: 56px;
+        h2 {
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 23px;
+            text-align: left;
+            color: $secondary-color;
+            margin-bottom: 8px;
+        }
+        ol {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 22.4px;
+            text-align: left;
+            padding-left: 24px;
+        }
+    }
+}
+
+

@@ -1,0 +1,714 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+* {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #161717;
+  color: #fff;
+}
+
+.flex-center, .excersice_wrapper .excersice_desc, .workout_wrapper .exercises .exercise_card, .workout_wrapper .exercises, .home_wrapper .workouts-body .program-card .features span, .home_wrapper .workouts-body .program-card .features, .home_wrapper .workouts-body, .home_wrapper .workout-head, .home_wrapper .profile a, .login_wrapper form, .login_wrapper .head, .onboarding_wrapper .card .btns, .onboarding_wrapper .card, .onboarding_wrapper, .page-head, .loader_wrapper, .main-nav a, .main-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.main-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(90deg, #2B2B2B 0%, #474747 100%);
+  /* main colour */
+  border: 0.5px solid #EBFC64;
+  border-radius: 20px;
+  padding: 12px;
+  z-index: 9999;
+  width: 100vw;
+  max-width: 100vw;
+  height: min-content;
+}
+.main-nav a {
+  flex-direction: column;
+  color: #FDFDFD;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.41px;
+  text-align: center;
+  color: #C4C4C4;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.main-nav a svg {
+  /* Style for SVG elements without a stroke */
+}
+.main-nav a svg path[stroke] {
+  stroke: #C4C4C4; /* or any desired style */
+}
+.main-nav a svg path:not([stroke]) {
+  fill: #C4C4C4; /* or any desired style */
+}
+
+.loader_wrapper {
+  height: 100vh;
+}
+
+.page-head {
+  gap: 8px;
+  justify-content: start;
+  position: relative;
+  margin-bottom: 32px;
+}
+.page-head h1 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 28.13px;
+  text-align: left;
+  color: #FDFDFD;
+  margin: 0;
+}
+
+.search {
+  position: relative;
+  margin-bottom: 24px;
+}
+.search svg {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+}
+.search input {
+  padding-left: 40px;
+}
+
+.loader_wrapper img {
+  width: 100%;
+  max-width: 350px;
+}
+
+input {
+  border: 1px solid #FDFDFD;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18.75px;
+  text-align: left;
+  color: #FDFDFD;
+  padding: 14px 16px;
+  background-color: transparent;
+  width: 100%;
+}
+input:focus {
+  outline: none;
+  border-color: #EBFC64;
+}
+
+.onboarding_wrapper {
+  align-items: end;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+.onboarding_wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.onboarding_wrapper::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.35);
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.onboarding_wrapper .card {
+  width: 100%;
+  padding: 32px;
+  background-color: rgba(253, 253, 253, 0.2);
+  flex-direction: column;
+  border-radius: 20px 20px 0 0;
+  z-index: 3;
+}
+.onboarding_wrapper .card h1 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 23.44px;
+  text-align: center;
+}
+.onboarding_wrapper .card p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  text-align: center;
+  color: #C4C4C4;
+}
+.onboarding_wrapper .card .btns {
+  width: 100%;
+  margin-top: 8px;
+}
+.onboarding_wrapper .card .btns a {
+  width: 100%;
+  color: #161717;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 23.44px;
+  border: 1px solid #EBFC64;
+  background-color: #EBFC64;
+  border-radius: 10px;
+  padding: 8px 12px;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+}
+.onboarding_wrapper .card .btns a:last-child {
+  background-color: transparent;
+  color: #EBFC64;
+}
+
+.login_wrapper {
+  width: 100%;
+  position: relative;
+  min-height: 100vh;
+  padding: 40px 16px;
+}
+.login_wrapper > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.1;
+}
+.login_wrapper .head {
+  gap: 8px;
+  justify-content: start;
+  position: relative;
+}
+.login_wrapper .head h1 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 28.13px;
+  text-align: left;
+  color: #FDFDFD;
+  margin: 0;
+}
+.login_wrapper form {
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 64px;
+  width: 100%;
+  position: relative;
+}
+.login_wrapper form button, .login_wrapper form > a {
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+  color: #161717;
+  padding: 12px 16px;
+  background-color: #EBFC64;
+  width: 100%;
+  margin-top: 16px;
+  border: none;
+}
+.login_wrapper form p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.09px;
+  text-align: left;
+}
+.login_wrapper form p a {
+  color: #EBFC64;
+  text-decoration: none;
+}
+
+.home_wrapper {
+  padding: 24px 16px 80px;
+}
+.home_wrapper .main-nav a:first-child {
+  position: relative;
+  color: #EBFC64;
+}
+.home_wrapper .main-nav a:first-child path {
+  stroke: #EBFC64;
+}
+.home_wrapper .main-nav a:first-child::after {
+  content: "";
+  height: 2px;
+  width: 100%;
+  background-color: #EBFC64;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+}
+.home_wrapper .profile a {
+  justify-content: start;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18.75px;
+  text-align: center;
+  color: #FDFDFD;
+  text-decoration: none;
+  margin-bottom: 32px;
+}
+.home_wrapper .profile a img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.home_wrapper .workout-head {
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.home_wrapper .workout-head h1 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 23.44px;
+  text-align: left;
+  color: #FDFDFD;
+}
+.home_wrapper .workout-head a {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16.41px;
+  text-align: left;
+  color: #FDFDFD;
+}
+.home_wrapper .workouts-body {
+  flex-direction: column;
+  width: 100%;
+}
+.home_wrapper .workouts-body .program-card {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  min-height: 168px;
+}
+.home_wrapper .workouts-body .program-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.home_wrapper .workouts-body .program-card::after {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3019607843);
+  content: "";
+}
+.home_wrapper .workouts-body .program-card *:not(img) {
+  z-index: 2;
+}
+.home_wrapper .workouts-body .program-card h1 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: max-content;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18.75px;
+  text-align: center;
+  color: #fff;
+  padding: 8px 12px;
+  background-color: rgba(22, 23, 23, 0.5019607843);
+}
+.home_wrapper .workouts-body .program-card .features {
+  justify-content: space-around;
+  position: absolute;
+  bottom: 16px;
+  width: 100%;
+}
+.home_wrapper .workouts-body .program-card .features span {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(22, 23, 23, 0.5019607843);
+  color: #EBFC64;
+  font-size: 8px;
+  font-weight: 400;
+  line-height: 9.38px;
+  text-align: center;
+  gap: 0px;
+  flex-direction: column;
+}
+.home_wrapper .workouts-body .program-card .features span h2 {
+  font-size: 8px;
+  font-weight: 400;
+  line-height: 9.38px;
+  text-align: center;
+}
+
+.workout_wrapper {
+  width: 100%;
+  position: relative;
+  min-height: 100vh;
+  padding: 40px 16px;
+}
+.workout_wrapper .exercises {
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+}
+.workout_wrapper .exercises .exercise_card {
+  background: linear-gradient(90deg, #2B2B2B 0%, #474747 100%);
+  border-radius: 10px;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px;
+  text-decoration: none;
+}
+.workout_wrapper .exercises .exercise_card svg {
+  width: 28px;
+}
+.workout_wrapper .exercises .exercise_card .text {
+  width: 100%;
+  height: 56px;
+}
+.workout_wrapper .exercises .exercise_card .text h1 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 18.75px;
+  text-align: left;
+  color: #FDFDFD;
+}
+.workout_wrapper .exercises .exercise_card .text p {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16.41px;
+  text-align: left;
+  color: #C4C4C4;
+}
+.workout_wrapper .exercises .exercise_card img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.excersice_wrapper {
+  width: 100%;
+  position: relative;
+  min-height: 100vh;
+  padding: 40px 16px;
+}
+.excersice_wrapper .thumbnail {
+  width: 100%;
+  height: 350px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.excersice_wrapper .thumbnail::after {
+  content: "";
+  position: absolute;
+  display: block;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background: linear-gradient(90deg, #2B2B2B 0%, #474747 100%);
+}
+.excersice_wrapper .thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.excersice_wrapper .excersice_desc {
+  flex-direction: column;
+  align-items: start;
+  gap: 32px;
+  margin-top: 32px;
+}
+.excersice_wrapper .excersice_desc h2 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 23.44px;
+  text-align: left;
+  margin-bottom: 8px;
+  color: #EBFC64;
+}
+.excersice_wrapper .excersice_desc ul {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  text-align: left;
+  color: #FDFDFD;
+  padding-left: 24px;
+}
+.excersice_wrapper .excersice_desc ul span {
+  opacity: 0.8;
+}
+
+.Bmi_wrapper {
+  width: 100%;
+  position: relative;
+  min-height: 100vh;
+  padding: 40px 16px;
+}
+.Bmi_wrapper .bmi .top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.Bmi_wrapper .bmi .top > div {
+  background: linear-gradient(90deg, #2B2B2B 0%, #474747 100%);
+  border-radius: 10px;
+  padding: 16px;
+}
+.Bmi_wrapper .bmi .top > div h2 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18.75px;
+  text-align: center;
+  color: #C4C4C4;
+}
+.Bmi_wrapper .bmi .top > div h1 {
+  color: #FDFDFD;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+}
+.Bmi_wrapper .bmi .top > div .rate_controller {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 40px;
+}
+.Bmi_wrapper .bmi .top > div .rate_controller button {
+  background-color: transparent;
+  border: none;
+}
+.Bmi_wrapper .bmi .bottom {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-top: 16px;
+}
+.Bmi_wrapper .bmi .bottom > div {
+  background: linear-gradient(90deg, #2B2B2B 0%, #474747 100%);
+  border-radius: 10px;
+  padding: 16px 40px;
+}
+.Bmi_wrapper .bmi .bottom > div h2 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18.75px;
+  text-align: center;
+  color: #C4C4C4;
+}
+.Bmi_wrapper .bmi .bottom > div h3 {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 28.13px;
+  text-align: center;
+  color: #EBFC64;
+  margin-top: 16px;
+}
+.Bmi_wrapper .bmi .bottom > div h1 {
+  color: #FDFDFD;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+}
+.Bmi_wrapper .bmi .bottom > div .rate_controller {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 8px;
+  position: relative;
+  /******** Firefox ********/
+}
+.Bmi_wrapper .bmi .bottom > div .rate_controller svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  bottom: 0;
+}
+.Bmi_wrapper .bmi .bottom > div .rate_controller input {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 15rem;
+  border: none;
+  width: 100%;
+  z-index: 2;
+}
+.Bmi_wrapper .bmi .bottom > div .rate_controller input:focus {
+  border: none;
+}
+.Bmi_wrapper .bmi .bottom > div .rate_controller input[type=range]::-webkit-slider-runnable-track {
+  background: transparent;
+  height: 0.5rem;
+}
+.Bmi_wrapper .bmi .bottom > div .rate_controller input[type=range]::-moz-range-track {
+  background: transparent;
+  height: 0.5rem;
+}
+.Bmi_wrapper .bmi .bottom > div .rate_controller input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  margin-top: -12px; /* Centers thumb on the track */
+  background-color: #EBFC64;
+  height: 2.5rem;
+  width: 4px;
+  border-radius: 50px;
+  position: relative;
+}
+.Bmi_wrapper .bmi .bottom > div .rate_controller input[type=range]::-webkit-slider-thumb::after {
+  content: "";
+  width: 25px;
+  height: 25px;
+  background-color: #EBFC64;
+}
+.Bmi_wrapper .bmi .bottom > div .rate_controller input[type=range]::-moz-range-thumb {
+  border: none; /*Removes extra border that FF applies*/
+  border-radius: 0; /*Removes default border-radius that FF applies*/
+  background-color: #EBFC64;
+  height: 2.5rem;
+  width: 4px;
+  border-radius: 50px;
+}
+.Bmi_wrapper .bmi .bottom > div .rate_controller button {
+  background-color: transparent;
+  border: none;
+}
+.Bmi_wrapper .bmi > button, .Bmi_wrapper .bmi > a {
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  margin-top: 120px;
+  color: #161717;
+  padding: 12px 16px;
+  background-color: #EBFC64;
+  width: 100%;
+  border: none;
+}
+.Bmi_wrapper .vue-speedometer {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-top: 32px;
+  margin-bottom: -128px;
+}
+.Bmi_wrapper .vue-speedometer::before {
+  content: "BMI";
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  background: #E6E6E6;
+  bottom: 50%;
+  border-radius: 60px 60px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  color: #000;
+  font-size: 32px;
+  font-weight: 700;
+  border-left: 5px solid #6B6B6B;
+  border-top: 5px solid #6B6B6B;
+  border-right: 5px solid #6B6B6B;
+}
+.Bmi_wrapper .vue-speedometer::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background: #fff;
+  border-radius: 200px 200px 0 0;
+  z-index: -1;
+  width: 300px;
+  border-left: 8px solid #6B6B6B;
+  border-top: 8px solid #6B6B6B;
+  border-right: 8px solid #6B6B6B;
+  box-sizing: border-box;
+  background: #E6E6E6;
+}
+.Bmi_wrapper .vue-speedometer .pointer {
+  transform: translate(148px, 146px);
+}
+.Bmi_wrapper .vue-speedometer .pointer path {
+  stroke: #000;
+  stroke-width: 2px;
+}
+.Bmi_wrapper .vue-speedometer g.label {
+  transform: translate(150px, 150px) scale(1.3);
+}
+.Bmi_wrapper .result {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 28.13px;
+  text-align: center;
+  width: 100%;
+  display: block;
+  margin: auto;
+  color: #EBFC64;
+}
+.Bmi_wrapper .desc {
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 400;
+  text-align: center;
+  color: #FDFDFD;
+  max-width: 260px;
+  display: block;
+  margin: auto;
+  color: #C4C4C4;
+  margin-top: 8px;
+}
+.Bmi_wrapper .tips_wrapper {
+  background: linear-gradient(90deg, #2B2B2B 0%, #474747 100%);
+  padding: 16px;
+  border-radius: 10px;
+  color: #C4C4C4;
+  margin-top: 56px;
+}
+.Bmi_wrapper .tips_wrapper h2 {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 23px;
+  text-align: left;
+  color: #EBFC64;
+  margin-bottom: 8px;
+}
+.Bmi_wrapper .tips_wrapper ol {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  text-align: left;
+  padding-left: 24px;
+}
+
+/*# sourceMappingURL=main.css.map */
