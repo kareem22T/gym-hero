@@ -1,7 +1,7 @@
 <template>
     <div class="Bmi_wrapper">
         <div class="page-head">
-            <router-link to="/home">
+            <router-link to="/bmi-calculator">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M21 17V7C21 4.79086 19.2091 3 17 3L7 3C4.79086 3 3 4.79086 3 7V17C3 19.2091 4.79086 21 7 21H17C19.2091 21 21 19.2091 21 17Z" stroke="#EBFC64" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M13.5 15L10.5 12L13.5 9" stroke="#EBFC64" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -16,7 +16,7 @@
             :needleHeightRatio=".65"
             :customSegmentStops="[0, 5, 10, 15, 20, 25]"
             :segmentColors='["#52C9F7", "#97CD17", "#FEDA00", "#F8931F", "#FE0000"]'
-            :value="10"
+            :value="returnAlternativeBmiSpeedValue()"
             :minValue="0"
             :maxValue="25"
             :customSegmentLabels='[
@@ -54,12 +54,16 @@
             ]'
         />
         <h1 class="result">
-            24.9
+            {{ parseFloat(result).toFixed(1) }}
         </h1>
-        <p class="desc">
-            Your BMI is in the healthy range (24.9), the focus might shift towards maintaining a healthy lifestyle overall
-        </p>
-        <div class="tips_wrapper">
+            <p class="desc">
+                Your BMI is 
+                <span v-if="isHealthyRange">{{ parseFloat(result).toFixed(1) }}, the focus might shift towards maintaining a healthy lifestyle overall.</span>
+                <span v-else-if="isUnderweight">{{ parseFloat(result).toFixed(1) }}, you might need to consider gaining some weight healthily.</span>
+                <span v-else-if="isOverweight">{{ parseFloat(result).toFixed(1) }}, you might need to consider losing some weight healthily.</span>
+                <span v-else-if="isObese">{{ parseFloat(result).toFixed(1) }}, it's important to seek advice on weight management.</span>
+            </p>
+            <div class="tips_wrapper">
             <h2>Tips</h2>
             <ol>
                 <li>Eat whole foods: Prioritize fruits, veggies, whole grains, and lean protein.</li>
@@ -73,31 +77,54 @@
 
 <script>
 import VueSpeedometer from "vue-speedometer"
+import { useRoute } from "vue-router"
+
 export default {
   name: 'BmiresultsView',
-  data () {
-    return {
-        age: 18,
-        weight: 70,
-        height: 150
-    }
-  },
   components: {
     VueSpeedometer
   },
   methods: {
-    handleIncAge() {
-        this.age += 1
+    returnAlternativeBmiSpeedValue() {
+        if (parseFloat(this.result) <= 18.5) {
+            return ((parseFloat(this.result) / 18.5) * 5)
+        } else if (parseFloat(this.result) > 18.6 && parseFloat(this.result) <= 24.9) {
+            return ((parseFloat(this.result) / 24.9) * 10)
+        } else if (parseFloat(this.result) > 25 && parseFloat(this.result) <= 29.9) {
+            return ((parseFloat(this.result) / 29.9) * 15)
+        }else if (parseFloat(this.result) > 30 && parseFloat(this.result) <= 34.9) {
+            return ((parseFloat(this.result) / 34.9) * 20)
+        }else if (parseFloat(this.result) > 35 && parseFloat(this.result) <= 40) {
+            return ((parseFloat(this.result) / 40) * 25)
+        }else if (parseFloat(this.result) > 40) {
+            return 25
+        } else {
+            return 0
+        }
+    }
+  },
+  computed: {
+    isHealthyRange() {
+      return this.result >= 18.5 && this.result <= 24.9;
     },
-    handleDecAge() {
-        this.age = this.age > 1 ? this.age - 1 : this.age
+    isUnderweight() {
+      return this.result < 18.5;
     },
-    handleIncWeight() {
-        this.weight += 1
+    isOverweight() {
+      return this.result >= 25 && this.result <= 29.9;
     },
-    handleDecWeight() {
-        this.weight = this.weight > 1 ? this.weight - 1 : this.weight
-    },
+    isObese() {
+      return this.result >= 30;
+    }
+  },
+  created() {
+    console.log(this.returnAlternativeBmiSpeedValue());
+  },
+  setup() {
+    const route = useRoute()
+    return {
+        result: route.params.result
+    }
   }
 }
 </script>

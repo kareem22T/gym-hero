@@ -21,7 +21,7 @@
         </h2>
         <swiper
             ref="swiper"
-            :slides-per-view="7"
+            :slides-per-view="'auto'"
             :space-between="10"
             :initial-slide="currentDay - 1"
             :free-mode="true"
@@ -36,7 +36,7 @@
             >
                 <button
                 :class="{ selected: index + 1 === selected  }"
-                @click="handleSelect(index + 1)"
+                @click="handleSelect(index + 1, day)"
                 >
                     {{ day.mon }}
                     <br>
@@ -46,12 +46,12 @@
         </swiper>
         <div class="chart_wrapper">
             <div class="percent">
-                <h1>{{ Math.ceil((drinkPerc / goal) * 100)}}%</h1>
+                <h1>{{ Math.ceil(((ammout && ammout.amount ? ammout.amount : drinkPerc) / goal) * 100)}}%</h1>
                 <img src="./../../assets/water.png" alt="">
             </div>
             <apexchart type="radialBar" height="280" :options="chartOptions" :series="series"></apexchart>
         </div>
-        <div class="rate_controller">
+        <div class="rate_controller" v-if="!ammout">
             <button @click="handleDecLitter">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M17 3H7C4.79086 3 3 4.79086 3 7V17C3 19.2091 4.79086 21 7 21H17C19.2091 21 21 19.2091 21 17V7C21 4.79086 19.2091 3 17 3Z" stroke="#EBFC64" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -67,7 +67,7 @@
                 </svg>
             </button>
         </div>
-        <button>
+        <button @click="postDay()" v-if="!ammout">
             Submit
         </button>
         <NavBar />
@@ -79,6 +79,8 @@ import NavBar from './../layout/NavBar'
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/swiper-bundle.css';
 import VueApexCharts from "vue3-apexcharts";
+import useAuth from '@/composables/useAuth';
+import instance from '@/api';
 
 export default {
   name: 'WaterTrakingView',
@@ -94,6 +96,9 @@ export default {
       drinkPerc: 2000,
       days: [],
       currentDay: new Date().getDate(),
+      currentMon: new Date().getMonth() + 1,
+      currentYear: new Date().getFullYear(),
+      ammout: null,
       selected: new Date().getDate(),
       series: [80],
         chartOptions: {
@@ -134,6 +139,52 @@ export default {
   methods: {
     handleSelect(i) {
         this.selected = i
+        this.drinkPerc = 2000
+        this.getDay().then(() => {
+            this.series[0] = Math.ceil(((this.ammout && this.ammout.amount ? this.ammout.amount : this.drinkPerc) / this.goal) * 100)
+        })
+    },
+    async getDay() {
+      try {
+        const response = await instance.get('/water_tracker/Date?date=' + this.currentYear + "-" + (this.currentMon < 10 ? "0" : "") + this.currentMon + "-" + this.selected, {
+          headers: {
+            "Authorization": `Bearer ${this.access_token}`
+          }
+        });
+        const res = response.data
+        this.ammout = res
+    } catch (error) {
+          this.ammout = null
+        if (error.response) {
+          console.log('Error response data:', error.response.data);
+          console.log('Error response status:', error.response.status);
+          console.log('Error response headers:', error.response.headers);
+        } else {
+          console.log('Error message:', error.message);
+        }
+      }
+    },
+    async postDay() {
+      try {
+        const response = await instance.post('/water_tracker', {
+            today: this.currentYear + "-" + (this.currentMon < 10 ? "0" : "") + this.currentMon + "-" + this.selected,
+            amount: this.drinkPerc,
+        }, {
+          headers: {
+            "Authorization": `Bearer ${this.access_token}`
+          }
+        });
+        const res = response.data
+        this.ammout = res
+      } catch (error) {
+        if (error.response) {
+          console.log('Error response data:', error.response.data);
+          console.log('Error response status:', error.response.status);
+          console.log('Error response headers:', error.response.headers);
+        } else {
+          console.log('Error message:', error.message);
+        }
+      }
     },
     handleIncLitter() {
         this.drinkPerc += 100
@@ -156,5 +207,15 @@ export default {
         this.days.push({day: day, mon: monthName});
       }
     },
-  },}
+},
+    created() {
+        this.getDay()
+    },
+  setup() {
+    const { access_token } = useAuth();
+    return {
+      access_token
+    };
+  },
+}
 </script>

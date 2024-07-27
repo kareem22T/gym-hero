@@ -1,5 +1,5 @@
 <template>
-    <div class="excersice_wrapper">
+    <div class="excersice_wrapper" v-if="exercise">
         <div class="page-head">
             <router-link to="/home">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -7,53 +7,28 @@
                 <path d="M13.5 15L10.5 12L13.5 9" stroke="#EBFC64" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </router-link>
-            <h1>Bench press</h1>
+            <h1>{{exercise.name}}</h1>
         </div>
         <div class="thumbnail">
-            <img src="./../../assets/ex.gif" alt="excersice">
+            <img :src="'data:image/gif;base64,' + exercise.photo" :alt="exercise.name">
         </div>
         <div class="excersice_desc">
             <div>
                 <h2>Sets</h2>
                 <ul>
-                    <li>3 sets x 15 </li>
-                    <li>4 sets x 15</li>
-                    <li>5 sets x 10</li>
-                    <li>6 sets x 10 </li>
+                    <li v-for="(set, index) in exercise.sets" :key="index">{{ set }}</li>
                 </ul>
             </div>
             <div>
                 <h2>Description</h2>
                 <ul>
-                    <li>
-                        Targets: <span>Chest, shoulders, triceps </span>
-                    </li>
-                    <li>
-                        Position: <span>Lie flat on a weight bench. </span>
-                    </li>
-                    <li>
-                        Movement: <span>Press weight down towards your chest. </span>
-                    </li>
-                    <li>
-                        Action: <span>Push the weight back up to the starting position.</span>
-                    </li>
+                    <li v-for="(description, index) in exercise.description" :key="index">{{ description }}</li>
                 </ul>
             </div>
             <div>
                 <h2>Instructions</h2>
                 <ul>
-                    <li>
-                        Set Up: <span>Flat bench, choose weight, secure spotter.</span>
-                    </li>
-                    <li>
-                        Lowering: <span>Controlled descent, elbows at 45 degrees, chest touch.</span>
-                    </li>
-                    <li>
-                        Pressing: <span>Core engaged, exhale and push up, squeeze chest. </span>
-                    </li>
-                    <li>
-                        Safety: <span>Always use a spotter for heavier weights.</span>
-                    </li>
+                    <li v-for="(instruction, index) in exercise.instructions" :key="index">{{ instruction }}</li>
                 </ul>
             </div>
         </div>
@@ -61,7 +36,43 @@
 </template>
 
 <script>
+import {useRoute} from "vue-router"
+import instance from "@/api";
+
 export default {
   name: 'ExerciseView',
+  data() {
+    return {
+        exercise: null,
+    }
+},
+  methods: {
+    async getExercise() {
+    try {
+        const response = await instance.get('/exercise/' + this.id);
+
+        this.exercise = response.data;
+        console.log('Response data:', response.data);
+    } catch (error) {
+        if (error.response) {
+            console.log('Error response data:', error.response.data);
+            console.log('Error response status:', error.response.status);
+            console.log('Error response headers:', error.response.headers);
+        } else {
+            console.log('Error message:', error.message);
+        }
+    }
+  }, 
+  },
+  created() {
+    this.getExercise();
+  },
+  setup() {
+    const route = useRoute();
+    const id = route.params.id;
+    return {
+      id
+    }
+  }
 }
 </script>

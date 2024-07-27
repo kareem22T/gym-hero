@@ -974,3 +974,71 @@ input {
         }
     }
 }
+
+.apexcharts-menu-icon {
+    display: none;
+}
+
+.water_chart, .sleep_chart {
+    background: linear-gradient(90deg, #2B2B2B 0%, #474747 100%);
+    border-radius: 10px;
+    margin-top: 16px;
+}
+
+.apexcharts-yaxis-label {
+    opacity: 1 !important;
+    fill: #fff !important;
+}
+
+.apexcharts-bar-area{
+    fill: #3CC7F5 !important;
+    border-radius: 4px !important;
+    overflow: hidden;
+}
+
+.apexcharts-xaxis-tick {
+    fill: transparent;
+    stroke: transparent;
+}
+
+.apexcharts-xaxis line {
+    display: none;
+}
+
+.stats_head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 56px;
+    cursor: pointer;
+    h3 {
+        display: flex;
+        gap: 8px;
+    }
+    >svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+
+.apexcharts-toolbar {
+    display: none !important;
+}
+
+.log_out {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    color: #EE3838;
+    font-size: 18px;
+    font-weight: 700;
+    border: none;
+    background-color: transparent;
+    margin-top: 32px;
+    svg {
+        width: 28px;
+        height: 28px;
+        stroke: #EE3838;
+    }
+}

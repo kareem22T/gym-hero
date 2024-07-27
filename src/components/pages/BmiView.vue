@@ -89,14 +89,20 @@
                     </div>
                 </div>
             </div>
-            <router-link to="/bmi-result">
+            <button @click="calcBmi()">
                 Calculate
-            </router-link>
+            </button>
         </div>
     </div>
 </template>
 
 <script>
+import instance from '@/api';
+import useAuth from '@/composables/useAuth';
+import 'vue-toast-notification/dist/theme-sugar.css';
+import { useToast } from 'vue-toast-notification';
+const $toast = useToast();
+
 export default {
   name: 'BmiView',
   data () {
@@ -119,6 +125,68 @@ export default {
     handleDecWeight() {
         this.weight = this.weight > 1 ? this.weight - 1 : this.weight
     },
-  }
+    async calcBmi() {
+      try {
+        const response = await instance.post('/users/bmi_calculator', {
+          age: this.age,
+          height: this.height,
+          weight: this.weight,
+        }, {
+          headers: {
+            "Authorization": `Bearer ${this.access_token}`
+          }
+        });
+
+        this.$router.push("/bmi-result/" + response.data)
+        
+      } catch (error) {
+        $toast.error('Failed to add');
+        if (error.response) {
+          console.log('Error response data:', error.response.data);
+          console.log('Error response status:', error.response.status);
+          console.log('Error response headers:', error.response.headers);
+        } else {
+          console.log('Error message:', error.message);
+        }
+      }
+    },
+    async getUser() {
+      try {
+        const response = await instance.get('/users/account', {
+          headers: {
+            "Authorization": `Bearer ${this.access_token}`
+          }
+        });
+        const res = response.data
+        if (res.height) {
+            this.height = res.height
+        }
+        if (res.weight) {
+            this.weight = res.weight
+        }
+        if (res.age) {
+            this.age = res.age
+        }
+      } catch (error) {
+        if (error.response) {
+          console.log('Error response data:', error.response.data);
+          console.log('Error response status:', error.response.status);
+          console.log('Error response headers:', error.response.headers);
+        } else {
+          console.log('Error message:', error.message);
+        }
+      }
+    },
+  },
+  created() {
+    this.getUser()
+  },
+  setup() {
+    const { access_token } = useAuth();
+
+    return {
+      access_token,
+    };
+  },
 }
 </script>

@@ -9,21 +9,25 @@ import BmiView from '@/components/pages/BmiView.vue'
 import BmiresultsView from '@/components/pages/BmiresultsView.vue'
 import WaterTrakingView from '@/components/pages/WaterTrakingView.vue'
 import ProfileView from '@/components/pages/ProfileView.vue'
+import auth from './../middleware/auth'
 
 const routes = [
   {
     path: '/',
     name: 'onboarding',
+    meta: { auth: false },
     component: OnboardingComponent
   },
-  {
+ {
     path: '/login',
     name: 'login',
+    meta: { auth: false },
     component: LoginView
   },
   {
     path: '/register',
     name: 'register',
+    meta: { auth: false },
     component: RegisterView
   },
   {
@@ -32,33 +36,37 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/workout',
+    path: '/workout/:id',
     name: 'workout',
     component: WorkoutView
   },
   {
-    path: '/exercise',
+    path: '/exercise/:id',
     name: 'exercise',
     component: ExerciseView
   },
   {
     path: '/bmi-calculator',
     name: 'bmi',
+    meta: { auth: true },
     component: BmiView
   },
   {
-    path: '/bmi-result',
+    path: '/bmi-result/:result',
     name: 'bmiresult',
+    meta: { auth: true },
     component: BmiresultsView
   },
   {
     path: '/water-traking',
     name: 'WaterTraking',
+    meta: { auth: true },
     component: WaterTrakingView
   },
   {
     path: '/profile',
     name: 'profile',
+    meta: { auth: true },
     component: ProfileView
   },
 ]
@@ -67,5 +75,6 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+router.beforeEach(auth);
 
 export default router
