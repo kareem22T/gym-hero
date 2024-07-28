@@ -49,7 +49,7 @@ export default {
   methods: {
     async getExercise() {
     try {
-        const response = await instance.get('/exercise/' + this.id);
+        const response = await instance.get('/exercise/get/' + this.id);
 
         this.exercise = response.data;
         console.log('Response data:', response.data);

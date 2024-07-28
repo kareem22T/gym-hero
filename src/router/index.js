@@ -10,6 +10,7 @@ import BmiresultsView from '@/components/pages/BmiresultsView.vue'
 import WaterTrakingView from '@/components/pages/WaterTrakingView.vue'
 import ProfileView from '@/components/pages/ProfileView.vue'
 import auth from './../middleware/auth'
+import SleepTrackerView from '@/components/pages/SleepTrackerView.vue'
 
 const routes = [
   {
@@ -62,6 +63,12 @@ const routes = [
     name: 'WaterTraking',
     meta: { auth: true },
     component: WaterTrakingView
+  },
+  {
+    path: '/sleep-traking',
+    name: 'SleepTrakingView',
+    meta: { auth: true },
+    component: SleepTrackerView
   },
   {
     path: '/profile',
